@@ -5,7 +5,7 @@
 #include <vtkGPUVolumeRayCastMapper.h>
 #include <vtkNew.h>
 #include <vtkOpenVRCamera.h>
-#include <vtkOpenVRCustomInteractorStyle.h>
+#include <vtkOpenVRInteractorStyle.h>
 #include <vtkOpenVRRenderer.h>
 #include <vtkOpenVRRenderWindow.h>
 #include <vtkOpenVRRenderWindowInteractor.h>
@@ -28,8 +28,8 @@ int main(int argc, char* argv[])
   vtkNew<vtkOpenVRRenderer> renderer;
   vtkNew<vtkOpenVRRenderWindow> renderWindow;
   vtkNew<vtkOpenVRRenderWindowInteractor> iren;
-  vtkNew<vtkOpenVRCustomInteractorStyle> style;
-  style->SetLeftButtonEvent( vtkOpenVRCustomInteractorStyle::PICK );
+  vtkNew<vtkOpenVRInteractorStyle> style;
+  //style->SetLeftButtonEvent( vtkOpenVRInteractorStyle::PICK );
   vtkNew<vtkOpenVRCamera> cam;
 
   renderWindow->AddRenderer( renderer.Get() );
@@ -69,13 +69,13 @@ int main(int argc, char* argv[])
   color->AddRGBPoint(  3071, 0.83, 0.66, 1.00 );
   volumeProperty->SetColor( color.GetPointer() );
   vtkNew<vtkPiecewiseFunction> opacity;
-  opacity->AddPoint( -3024, 0.00 );
-  opacity->AddPoint( -86.9, 0.00 );
-  opacity->AddPoint( 45.38, 0.17 );
-  opacity->AddPoint( 139.9, 0.39 );
-  opacity->AddPoint( 347.9, 0.51 );
-  opacity->AddPoint(  1224, 0.59 );
-  opacity->AddPoint(  3071, 0.61 );
+  opacity->AddPoint( -3024, 1 );
+  opacity->AddPoint( -86.9, 1 );
+  opacity->AddPoint( 45.38, 1 );
+  opacity->AddPoint( 139.9, 1 );
+  opacity->AddPoint( 347.9, 1 );
+  opacity->AddPoint(  1224, 1 );
+  opacity->AddPoint(  3071, 1 );
   volumeProperty->SetScalarOpacity( opacity.GetPointer() );
 
   // Render
